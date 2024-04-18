@@ -1,12 +1,8 @@
-close all, clear all, clc
-
-%CONST
-FILENAME_STRING = 'Errors.csv';
-%
-
-[error, variable] = read_csv(FILENAME_STRING);
-plotdata_3D(error, variable);
-
+function input_file = Error_plot_3D(file_name)
+    input_file = file_name;
+    [error, variable] = read_csv(input_file);
+    plotdata_3D(error, variable);
+end
 
 function [error, variable] = read_csv(file_name)
     data = readtable(file_name);
@@ -17,10 +13,10 @@ end
 function [] = plotdata_3D(error, variable)
     data = [table2array(error), table2array(variable)];
 
-    figure('Name','___ Put name');
+    figure('Name', 'Error');
     hist3(data,'CDataMode','auto','FaceColor','interp');
 
-    xlabel('Error')
-    ylabel('Variable')
-    title('ULP?')
+    xlabel('Error');
+    ylabel('Variable');
+    title('ULP?');
 end
