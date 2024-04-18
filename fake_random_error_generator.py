@@ -6,11 +6,11 @@ import pandas as pd
 #CONST
 XYZ_SIZE = 2**10
 MEAN = 0
-STD_DEV = 0.7
+STD_DEV = 2
 
 def generate_xy_vectors():
     x = np.arange(-XYZ_SIZE/2, XYZ_SIZE/2, 1)
-    y= np.arange(-XYZ_SIZE/2, XYZ_SIZE/2, 1)
+    y = np.arange(-XYZ_SIZE/2, XYZ_SIZE/2, 1)
     return x, y
 
 def generate_random_error():
@@ -18,13 +18,13 @@ def generate_random_error():
     return z
 
 def write_to_csv():
-    csv_columns = {'X' , 'Y', 'ERROR'}
+    csv_columns = {'ERROR', 'Variable' }
     x_vector, y_vector = generate_xy_vectors()
     error_vector = generate_random_error()
 
     df = pd.DataFrame(columns=csv_columns)
 
-    for column, value in zip(csv_columns, np.vstack((x_vector, y_vector, error_vector))):
+    for column, value in zip(csv_columns, np.vstack((error_vector, x_vector, y_vector))):
         df[column] = value
 
     print(df)
