@@ -1,4 +1,4 @@
-function input_file = Error_polt_3D(file_name)
+function input_file = Error_plot_3D(file_name)
     input_file = file_name;
     [error, variable] = read_csv(input_file);
     plotdata_3D(error, variable);
